@@ -1,7 +1,7 @@
 # webscraper
-To run
-python courses.py
+To run: <br />
+python courses.py <br />
 
-Requirements:
-Chrome
-chromedriver
+Requirements: <br />
+Chrome <br />
+chromedriver <br />
