@@ -29,13 +29,16 @@ search = driver.find_element_by_id("crit-keyword")
 search.send_keys("cs")
 search.send_keys(Keys.RETURN)
 
+#add delay to wait for searches to load
 time.sleep(1)
 
 courses = driver.find_elements_by_class_name("result__link")
 
 for course in courses:
     course.click()  #automate clicking through cs courses
+
     time.sleep(0.5)
+
     courseCode = driver.find_element_by_class_name("dtl-course-code")
     courseTitle = driver.find_element_by_css_selector(".col-8")
     courseHours = driver.find_element_by_css_selector(".detail-hours_html")
@@ -43,6 +46,7 @@ for course in courses:
 
     sections = driver.find_elements_by_class_name("course-section-mp")
     professors = driver.find_elements_by_class_name("course-section-instr")
+    
     for i in range(len(sections)):
         print(sections[i].text + " " + professors[i].text)
 
