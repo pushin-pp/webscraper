@@ -12,9 +12,11 @@ f = open(filename, "w", encoding="utf-8")
 headers = "Class Code, Class Title, Credit Hours, Times, Professors"
 f.write(headers)
 
+#selenium webscraping driver
 path = r"C:\Users\EP\Desktop\College\Sophomore\CS 370\Webscraper\chromedriver.exe"
 driver = webdriver.Chrome(path)
 
+#website
 driver.get("https://atlas.emory.edu/")
 print(driver.title)
 
@@ -30,16 +32,14 @@ search.send_keys(Keys.RETURN)
 time.sleep(1)
 
 courses = driver.find_elements_by_class_name("result__link")
+
 for course in courses:
-    course.click()
+    course.click()  #automate clicking through cs courses
     time.sleep(0.5)
     courseCode = driver.find_element_by_class_name("dtl-course-code")
     courseTitle = driver.find_element_by_css_selector(".col-8")
     courseHours = driver.find_element_by_css_selector(".detail-hours_html")
     print(courseCode.text + ' ' + courseTitle.text + ' | Credit Hours: ' + courseHours.text.split()[2])
-    # print(courseCode.text)
-    # print(courseTitle.text)
-    # print(courseHours.text.split()[2])
 
     sections = driver.find_elements_by_class_name("course-section-mp")
     professors = driver.find_elements_by_class_name("course-section-instr")
