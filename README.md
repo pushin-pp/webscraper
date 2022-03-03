@@ -4,4 +4,5 @@ python courses.py <br />
 
 Requirements: <br />
 Chrome <br />
-chromedriver <br />
+chromium chromedriver <br />
+https://chromedriver.chromium.org/downloads
