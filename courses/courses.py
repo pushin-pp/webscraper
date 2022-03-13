@@ -2,14 +2,23 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 import time
-import csv
 
 #open and write csv files
 filename = "CS_Classes.csv"
 f = open(filename, "w", encoding="utf-8")
 
+# courseID(CS 170-1)
+# department
+# course #
+# section number
+# name
+# start time
+# end time
+# credit hours
+# professorID
+
 #excel headers
-headers = "Class Code, Class Title, Credit Hours, Times, Professors"
+headers = "Class Code, Section #, Class Title, Credit Hours, Times, Professors\n"
 f.write(headers)
 
 #selenium webscraping driver
@@ -44,15 +53,17 @@ for course in courses:
     courseHours = driver.find_element_by_css_selector(".detail-hours_html")
     print(courseCode.text + ' ' + courseTitle.text + ' | Credit Hours: ' + courseHours.text.split()[2])
 
+    sectionNumbers = driver.find_elements_by_class_name("course-section-section")
     sections = driver.find_elements_by_class_name("course-section-mp")
     professors = driver.find_elements_by_class_name("course-section-instr")
     
     for i in range(len(sections)):
-        print(sections[i].text + " " + professors[i].text)
+        print(sectionNumbers[i].text + " " + sections[i].text + " " + professors[i].text)
 
         #write scraped data into CSV file
         f.write(
             courseCode.text + "," +
+            sectionNumbers[i].text + "," +
             courseTitle.text + "," +
             courseHours.text.split()[2] + "," +
             sections[i].text + "," +
