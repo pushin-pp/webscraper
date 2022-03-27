@@ -1,6 +1,6 @@
 # webscraper
 To run: <br />
-python courses.py <br />
+python webscraper.py <br />
 
 Requirements: <br />
 Chrome <br />
